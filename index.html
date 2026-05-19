@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,241 +12,277 @@
 </head>
 
 <body>
-<header>
-    <h1>🛒 Smart Shopping Planner</h1>
-    <p>Learn How Coding Helps You Save Money Wisely!</p>
-</header>
 
-<div class="container">
+    <!-- Header -->
+    <header>
+        <h1>🛒 Smart Shopping Planner</h1>
+        <p>Learn How Coding Helps You Save Money Wisely!</p>
+    </header>
 
-    <!-- Introduction -->
-    <section class="section">
-        <h2>Why Use a Shopping Planner?</h2>
+    <div class="container">
 
-        <p>
-            ✔ Make organized shopping lists <br>
-            ✔ Track discounts and coupons <br>
-            ✔ Calculate prices automatically <br>
-            ✔ Save money with coding
-        </p>
-    </section>
+        <!-- Introduction -->
+        <section class="section">
 
+            <h2>Why Use a Shopping Planner?</h2>
 
-    <!-- Shopping Form -->
-    <section class="section">
+            <p>
+                ✔ Make organized shopping lists <br>
+                ✔ Track discounts and coupons <br>
+                ✔ Calculate prices automatically <br>
+                ✔ Save money with coding
+            </p>
 
-       <h2>Create Your Shopping List</h2>
+        </section>
 
-        <div class="inputs">
+        <!-- Shopping Form -->
+        <section class="section">
 
-            <input type="text" id="itemName" placeholder="Item Name">
+            <h2>Create Your Shopping List</h2>
 
-            <select id="category">
-                <option value="Clothing">Clothing</option>
-                <option value="Food">Food</option>
-                <option value="Household">Household</option>
-            </select>
+            <div class="inputs">
 
-            <input type="number" id="price" placeholder="Price">
+                <input
+                    type="text"
+                    id="itemName"
+                    placeholder="Item Name"
+                >
 
-            <input type="number" id="quantity" placeholder="Quantity">
+                <select id="category">
 
-            <input type="number" id="discount" placeholder="Discount %">
+                    <option value="Clothing">
+                        Clothing
+                    </option>
 
-            <button onclick="addItem()">Add Item</button>
+                    <option value="Food">
+                        Food
+                    </option>
 
-        </div>
+                    <option value="Household">
+                        Household
+                    </option>
 
-        <!-- Shopping Table -->
-        <table>
+                </select>
 
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Category</th>
-                    <th>Price (€)</th>
-                    <th>Quantity</th>
-                    <th>Discount</th>
-                    <th>Final Price (€)</th>
-                </tr>
-            </thead>
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="Price"
+                >
 
-            <tbody id="shoppingTable">
+                <input
+                    type="number"
+                    id="quantity"
+                    placeholder="Quantity"
+                >
 
-            </tbody>
+                <input
+                    type="number"
+                    id="discount"
+                    placeholder="Discount %"
+                >
 
-        </table>
+                <button onclick="addItem()">
+                    Add Item
+                </button>
 
-        <div class="total-box">
-            <h3>Total Cost: € <span id="total">0.00</span></h3>
-        </div>
+            </div>
 
-    </section>
+            <!-- Shopping Table -->
+            <table>
 
-    <!-- Discount Section -->
-    <section class="section">
+                <thead>
 
-        <h2>Best Discounts & Coupons</h2>
+                    <tr>
+                        <th>Bought</th>
+                        <th>Item</th>
+                        <th>Category</th>
+                        <th>Price (€)</th>
+                        <th>Quantity</th>
+                        <th>Discount</th>
+                        <th>Final Price (€)</th>
+                    </tr>
 
-        <table>
+                </thead>
 
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Shop</th>
-                    <th>Discount</th>
-                    <th>Coupon</th>
-                </tr>
-            </thead>
+                <tbody id="shoppingbody">
 
-            <tbody>
+                </tbody>
 
-                <tr>
-                    <td>Clothing</td>
-                    <td>Fashion Store</td>
-                    <td>20% OFF</td>
-                    <td>STYLE20</td>
-                </tr>
+            </table>
 
-                <tr>
-                    <td>Food</td>
-                    <td>SuperMart</td>
-                    <td>10% OFF</td>
-                    <td>FOOD10</td>
-                </tr>
+            <!-- Total -->
+            <div class="total-box">
 
-                <tr>
-                    <td>Household</td>
-                    <td>HomeShop</td>
-                    <td>15% OFF</td>
-                    <td>HOME15</td>
-                </tr>
+                <h3>
+                    Total Cost:
+                    € <span id="total">0.00</span>
+                </h3>
 
-            </tbody>
+            </div>
 
-        </table>
+        </section>
 
-    </section>
+        <!-- Discount Section -->
+        <section class="section">
 
-    <!-- Coding Explanation -->
-    <section class="section">
+            <h2>Best Discounts & Coupons</h2>
 
-        <h2>How Coding Helps</h2>
+            <table>
 
-        <ul>
-            <li>➕ Addition calculates total prices</li>
-            <li>✖ Multiplication calculates quantity × price</li>
-            <li>➖ Subtraction removes discounts</li>
-            <li>🔢 Decimals calculate exact money values</li>
-            <li>💻 JavaScript automates shopping calculations</li>
-        </ul>
+                <thead>
 
-    </section>
+                    <tr>
+                        <th>Category</th>
+                        <th>Shop</th>
+                        <th>Discount</th>
+                        <th>Coupon</th>
+                    </tr>
 
-    <!-- Inventory -->
-   <!-- Inventory With Images -->
-<section class="section">
+                </thead>
 
-    <h2>Inventory Categories</h2>
+                <tbody>
 
-    <div class="inventory-container">
+                    <tr>
+                        <td>Clothing</td>
+                        <td>Fashion Store</td>
+                        <td>20% OFF</td>
+                        <td>STYLE20</td>
+                    </tr>
 
-        <!-- Clothing -->
-        <div class="card">
+                    <tr>
+                        <td>Food</td>
+                        <td>SuperMart</td>
+                        <td>10% OFF</td>
+                        <td>FOOD10</td>
+                    </tr>
 
-            <img 
-            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"
-            alt="Clothing">
+                    <tr>
+                        <td>Household</td>
+                        <td>HomeShop</td>
+                        <td>15% OFF</td>
+                        <td>HOME15</td>
+                    </tr>
 
-            <h3>👕 Clothing</h3>
+                </tbody>
 
-            <p>Shirts, Shoes, Jackets, Jeans</p>
+            </table>
 
-        </div>
+        </section>
 
-        <!-- Food -->
-        <div class="card">
+        <!-- Coding Explanation -->
+        <section class="section">
 
-            <img 
-            src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400"
-            alt="Food">
+            <h2>How Coding Helps</h2>
 
-            <h3>🍎 Food</h3>
+            <ul>
 
-            <p>Rice, Fruits, Milk, Vegetables</p>
+                <li>
+                    ➕ Addition calculates total prices
+                </li>
 
-        </div>
+                <li>
+                    ✖ Multiplication calculates quantity × price
+                </li>
 
-        <!-- Household -->
-        <div class="card">
-           <body>
+                <li>
+                    ➖ Subtraction removes discounts
+                </li>
 
-<header>...</header>
+                <li>
+                    🔢 Decimals calculate exact money values
+                </li>
 
-<div class="container">
+                <li>
+                    💻 JavaScript automates shopping calculations
+                </li>
 
-    <!-- Introduction -->
-    
-    <!-- Shopping Form -->
-    
-    <!-- Discount Section -->
-    
-    <!-- Coding Explanation -->
+            </ul>
 
-    <!-- Inventory With Images -->
+        </section>
 
-</div>
+        <!-- Inventory -->
+        <section class="section">
 
-<footer>...</footer>
+            <h2>Inventory Categories</h2>
 
-<script src="script.js"></script>
+            <div class="inventory-container">
 
-</body>
-</html> 
+                <!-- Clothing -->
+                <div class="card">
 
-            <img 
-            src="https://images.unsplash.com/photo-1583947582886-f40ec95dd752?w=400"
-            alt="Household">
+                    <img
+                        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"
+                        alt="Clothing"
+                    >
 
-            <h3>🧴 Household</h3>
+                    <h3>👕 Clothing</h3>
 
-            <p>Soap, Towels, Detergent</p>
+                    <p>
+                        Shirts, Shoes, Jackets, Jeans
+                    </p>
 
-        </div>
+                </div>
+
+                <!-- Food -->
+                <div class="card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400"
+                        alt="Food"
+                    >
+
+                    <h3>🍎 Food</h3>
+
+                    <p>
+                        Rice, Fruits, Milk, Vegetables
+                    </p>
+
+                </div>
+
+                <!-- Household -->
+                <div class="card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1583947582886-f40ec95dd752?w=400"
+                        alt="Household"
+                    >
+
+                    <h3>🧴 Household</h3>
+
+                    <p>
+                        Soap, Towels, Detergent
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Contact -->
+        <section class="section">
+
+            <h2>Contact Us</h2>
+
+            <p>
+                Email:
+                <a href="mailto:support@shoppingplanner.com">
+                    support@shoppingplanner.com
+                </a>
+            </p>
+
+        </section>
 
     </div>
 
-</section>
+    <!-- Footer -->
+    <footer>
+        <p>Made with HTML, CSS & JavaScript</p>
+    </footer>
 
-            </tbody>
-
-        </table>
-
-    </section>
-<section class="section">
-    <h2>contact Us</h2>
-    <p>Email: <a href="mailto:support@shoppingplanner.com">support@shoppingplanner.com</a></p>
-</section>
-
-        <h2>How Coding Helps</h2>
-
-        <ul>
-            <li>➕ Addition calculates total prices</li>
-            <li>✖ Multiplication calculates quantity × price</li>
-            <li>➖ Subtraction removes discounts</li>
-            <li>🔢 Decimals calculate exact money values</li>
-            <li>💻 JavaScript automates shopping calculations</li>
-        </ul>
-
-    </section>
-</div>
-
-<footer>
-    <p>Made with HTML, CSS & JavaScript</p>
-</footer>
-
-<!-- JavaScript File -->
-<script src="script.js"></script>
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
 
 </body>
 </html>
