@@ -1,108 +1,326 @@
-// Total shopping cost
+// ===============================
+// SMART SHOPPING PLANNER
+// ===============================
+
 let totalCost = 0;
 
-// Add item function
-function addItem(){
+let shoppingItems =
+    JSON.parse(localStorage.getItem("shoppingItems")) || [];
 
-    // Get input values
+
+// ===============================
+// ADD ITEM
+// ===============================
+
+function addItem() {
+
     const itemName =
-        document.getElementById("itemName").value;
+        document.getElementById("itemName").value.trim();
 
     const category =
         document.getElementById("category").value;
 
-    const price = parseFloat(
-        document.getElementById("price").value
-    );
+    const price =
+        parseFloat(document.getElementById("price").value);
 
-    const quantity = parseInt(
-        document.getElementById("quantity").value
-    );
+    const quantity =
+        parseInt(document.getElementById("quantity").value);
 
-    const discount = parseFloat(
-        document.getElementById("discount").value
-    ) || 0;
+    const discount =
+        parseFloat(document.getElementById("discount").value);
 
     // Validation
-    if(
-        itemName.trim() === "" ||
+    if (
+        itemName === "" ||
         isNaN(price) ||
-        isNaN(quantity)
-    ){
-        alert("Please fill all fields correctly!");
+        isNaN(quantity) ||
+        isNaN(discount)
+    ) {
+        alert("Please fill all fields.");
         return;
     }
 
-    // Calculations
-    let subtotal = price * quantity;
+    // Price Calculation
+    const subtotal = price * quantity;
 
-    let discountAmount =
+    const discountAmount =
         subtotal * (discount / 100);
 
-    let finalPrice =
+    const finalPrice =
         subtotal - discountAmount;
 
-    // Add to total cost
-    totalCost += finalPrice;
+    // Create Item Object
+    const item = {
+        itemName,
+        category,
+        price,
+        quantity,
+        discount,
+        finalPrice,
+        bought: false
+    };
 
-    // Get table body
-    const table =
-        document.getElementById("shoppingbody");
+    // Save Item
+    shoppingItems.push(item);
 
-    // Create row
-    const row =
-        document.createElement("tr");
+    localStorage.setItem(
+        "shoppingItems",
+        JSON.stringify(shoppingItems)
+    );
 
-    row.innerHTML = `
-        <td>
-            <button onclick="markAsBought(this)">
-                Bought
-            </button>
-        </td>
+    // Refresh UI
+    displayItems();
 
-        <td>${itemName}</td>
-
-        <td>${category}</td>
-
-        <td>€ ${price.toFixed(2)}</td>
-
-        <td>${quantity}</td>
-
-        <td>${discount}%</td>
-
-        <td>€ ${finalPrice.toFixed(2)}</td>
-    `;
-
-    // Add row to table
-    table.appendChild(row);
-
-    // Update total display
-    document.getElementById("total").innerText =
-        totalCost.toFixed(2);
-
-    // Clear input fields
+    // Clear Form
     clearInputs();
 }
 
-// Mark item as bought
-function markAsBought(button){
 
-    // Get row
-    const row =
-        button.parentElement.parentElement;
+// ===============================
+// DISPLAY ITEMS
+// ===============================
 
-    // Add bought class
-    row.classList.add("bought");
+function displayItems() {
 
-    // Change button text
-    button.innerText = "Bought ✓";
+    const tableBody =
+        document.getElementById("shoppingBody");
 
-    // Disable button
-    button.disabled = true;
+    tableBody.innerHTML = "";
+
+    totalCost = 0;
+
+    shoppingItems.forEach((item, index) => {
+
+        totalCost += item.finalPrice;
+
+        const row =
+            document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${item.itemName}</td>
+
+            <td>${item.category}</td>
+
+            <td>€${item.price.toFixed(2)}</td>
+
+            <td>${item.quantity}</td>
+
+            <td>${item.discount}%</td>
+
+            <td>€${item.finalPrice.toFixed(2)}</td>
+
+            <td>
+                <input
+                    type="checkbox"
+                    ${item.bought ? "checked" : ""}
+                    onchange="toggleBought(${index})"
+                >
+            </td>
+
+            <td>
+                <button onclick="editItem(${index})">
+                    Edit
+                </button>
+
+                <button onclick="removeItem(${index})">
+                    Delete
+                </button>
+            </td>
+        `;
+
+        tableBody.appendChild(row);
+
+    });
+
+    // Update Total
+    document.getElementById("total").innerText =
+        totalCost.toFixed(2);
+
+    analyzeSpending();
 }
 
-// Clear all inputs
-function clearInputs(){
+
+// ===============================
+// REMOVE ITEM
+// ===============================
+
+function removeItem(index) {
+
+    shoppingItems.splice(index, 1);
+
+    localStorage.setItem(
+        "shoppingItems",
+        JSON.stringify(shoppingItems)
+    );
+
+    displayItems();
+}
+
+
+// ===============================
+// EDIT ITEM
+// ===============================
+
+function editItem(index) {
+
+    const item = shoppingItems[index];
+
+    document.getElementById("itemName").value =
+        item.itemName;
+
+    document.getElementById("category").value =
+        item.category;
+
+    document.getElementById("price").value =
+        item.price;
+
+    document.getElementById("quantity").value =
+        item.quantity;
+
+    document.getElementById("discount").value =
+        item.discount;
+
+    // Remove old item
+    shoppingItems.splice(index, 1);
+
+    localStorage.setItem(
+        "shoppingItems",
+        JSON.stringify(shoppingItems)
+    );
+
+    displayItems();
+}
+
+
+// ===============================
+// TOGGLE BOUGHT
+// ===============================
+
+function toggleBought(index) {
+
+    shoppingItems[index].bought =
+        !shoppingItems[index].bought;
+
+    localStorage.setItem(
+        "shoppingItems",
+        JSON.stringify(shoppingItems)
+    );
+}
+
+
+// ===============================
+// SEARCH ITEMS
+// ===============================
+
+function searchItems() {
+
+    const input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const rows =
+        document.querySelectorAll("#shoppingBody tr");
+
+    rows.forEach(row => {
+
+        const text =
+            row.innerText.toLowerCase();
+
+        row.style.display =
+            text.includes(input)
+                ? ""
+                : "none";
+
+    });
+}
+
+
+// ===============================
+// CHECK BUDGET
+// ===============================
+
+function checkBudget() {
+
+    const budget =
+        parseFloat(
+            document.getElementById("budget").value
+        );
+
+    if (isNaN(budget)) {
+
+        alert("Please enter a valid budget.");
+        return;
+    }
+
+    if (totalCost > budget) {
+
+        alert("⚠ Budget exceeded!");
+
+    } else {
+
+        alert("✅ You are within budget.");
+    }
+}
+
+
+// ===============================
+// ANALYZE SPENDING
+// ===============================
+
+function analyzeSpending() {
+
+    let categories = {};
+
+    shoppingItems.forEach(item => {
+
+        if (!categories[item.category]) {
+
+            categories[item.category] = 0;
+        }
+
+        categories[item.category] +=
+            item.finalPrice;
+
+    });
+
+    let maxCategory = "";
+    let maxValue = 0;
+
+    for (let category in categories) {
+
+        if (categories[category] > maxValue) {
+
+            maxValue =
+                categories[category];
+
+            maxCategory =
+                category;
+        }
+    }
+
+    document.getElementById("mostCategory").innerText =
+        maxCategory
+            ? `Most spending on: ${maxCategory}`
+            : "";
+}
+
+
+// ===============================
+// DARK MODE
+// ===============================
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle("dark-mode");
+}
+
+
+// ===============================
+// CLEAR INPUTS
+// ===============================
+
+function clearInputs() {
 
     document.getElementById("itemName").value = "";
 
@@ -111,6 +329,11 @@ function clearInputs(){
     document.getElementById("quantity").value = "";
 
     document.getElementById("discount").value = "";
-
-    document.getElementById("category").selectedIndex = 0;
 }
+
+
+// ===============================
+// LOAD SAVED ITEMS
+// ===============================
+
+displayItems();

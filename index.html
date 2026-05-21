@@ -1,288 +1,278 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Shopping Planner</title>
 
-    <title>Smart Shopping Planner</title>
-
-    <!-- CSS File -->
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>🛒 Smart Shopping Planner</h1>
-        <p>Learn How Coding Helps You Save Money Wisely!</p>
-    </header>
-
-    <div class="container">
-
-        <!-- Introduction -->
-        <section class="section">
-
-            <h2>Why Use a Shopping Planner?</h2>
-
-            <p>
-                ✔ Make organized shopping lists <br>
-                ✔ Track discounts and coupons <br>
-                ✔ Calculate prices automatically <br>
-                ✔ Save money with coding
-            </p>
-
-        </section>
-
-        <!-- Shopping Form -->
-        <section class="section">
-
-            <h2>Create Your Shopping List</h2>
-
-            <div class="inputs">
-
-                <input
-                    type="text"
-                    id="itemName"
-                    placeholder="Item Name"
-                >
-
-                <select id="category">
-
-                    <option value="Clothing">
-                        Clothing
-                    </option>
-
-                    <option value="Food">
-                        Food
-                    </option>
-
-                    <option value="Household">
-                        Household
-                    </option>
-
-                </select>
-
-                <input
-                    type="number"
-                    id="price"
-                    placeholder="Price"
-                >
-
-                <input
-                    type="number"
-                    id="quantity"
-                    placeholder="Quantity"
-                >
-
-                <input
-                    type="number"
-                    id="discount"
-                    placeholder="Discount %"
-                >
-
-                <button onclick="addItem()">
-                    Add Item
-                </button>
-
-            </div>
-
-            <!-- Shopping Table -->
-            <table>
-
-                <thead>
-
-                    <tr>
-                        <th>Bought</th>
-                        <th>Item</th>
-                        <th>Category</th>
-                        <th>Price (€)</th>
-                        <th>Quantity</th>
-                        <th>Discount</th>
-                        <th>Final Price (€)</th>
-                    </tr>
-
-                </thead>
-
-                <tbody id="shoppingbody">
-
-                </tbody>
-
-            </table>
-
-            <!-- Total -->
-            <div class="total-box">
-
-                <h3>
-                    Total Cost:
-                    € <span id="total">0.00</span>
-                </h3>
-
-            </div>
-
-        </section>
-
-        <!-- Discount Section -->
-        <section class="section">
-
-            <h2>Best Discounts & Coupons</h2>
-
-            <table>
-
-                <thead>
-
-                    <tr>
-                        <th>Category</th>
-                        <th>Shop</th>
-                        <th>Discount</th>
-                        <th>Coupon</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>Clothing</td>
-                        <td>Fashion Store</td>
-                        <td>20% OFF</td>
-                        <td>STYLE20</td>
-                    </tr>
-
-                    <tr>
-                        <td>Food</td>
-                        <td>SuperMart</td>
-                        <td>10% OFF</td>
-                        <td>FOOD10</td>
-                    </tr>
-
-                    <tr>
-                        <td>Household</td>
-                        <td>HomeShop</td>
-                        <td>15% OFF</td>
-                        <td>HOME15</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </section>
-
-        <!-- Coding Explanation -->
-        <section class="section">
-
-            <h2>How Coding Helps</h2>
-
-            <ul>
-
-                <li>
-                    ➕ Addition calculates total prices
-                </li>
-
-                <li>
-                    ✖ Multiplication calculates quantity × price
-                </li>
-
-                <li>
-                    ➖ Subtraction removes discounts
-                </li>
-
-                <li>
-                    🔢 Decimals calculate exact money values
-                </li>
-
-                <li>
-                    💻 JavaScript automates shopping calculations
-                </li>
-
-            </ul>
-
-        </section>
-
-        <!-- Inventory -->
-        <section class="section">
-
-            <h2>Inventory Categories</h2>
-
-            <div class="inventory-container">
-
-                <!-- Clothing -->
-                <div class="card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"
-                        alt="Clothing"
-                    >
-
-                    <h3>👕 Clothing</h3>
-
-                    <p>
-                        Shirts, Shoes, Jackets, Jeans
-                    </p>
-
-                </div>
-
-                <!-- Food -->
-                <div class="card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400"
-                        alt="Food"
-                    >
-
-                    <h3>🍎 Food</h3>
-
-                    <p>
-                        Rice, Fruits, Milk, Vegetables
-                    </p>
-
-                </div>
-
-                <!-- Household -->
-                <div class="card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1583947582886-f40ec95dd752?w=400"
-                        alt="Household"
-                    >
-
-                    <h3>🧴 Household</h3>
-
-                    <p>
-                        Soap, Towels, Detergent
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- Contact -->
-        <section class="section">
-
-            <h2>Contact Us</h2>
-
-            <p>
-                Email:
-                <a href="mailto:support@shoppingplanner.com">
-                    support@shoppingplanner.com
-                </a>
-            </p>
-
-        </section>
-
+  <!-- Header -->
+  <header>
+    <h1>🛒 Smart Shopping Planner</h1>
+    <p>Learn How Coding Helps You Save Money Wisely!</p>
+
+    <div class="budget-box">
+      <input
+        type="number"
+        id="budget"
+        placeholder="Set Budget"
+      />
+
+      <button onclick="checkBudget()">
+        Check Budget
+      </button>
+
+      <button onclick="window.print()">
+        Export PDF
+      </button>
     </div>
+  </header>
 
-    <!-- Footer -->
-    <footer>
-        <p>Made with HTML, CSS & JavaScript</p>
-    </footer>
+  <div class="container">
 
-    <!-- JavaScript File -->
-    <script src="script.js"></script>
+    <!-- Introduction -->
+    <section class="section">
+      <h2>Why Use a Shopping Planner?</h2>
+
+      <p>
+        ✔ Make organized shopping lists <br />
+        ✔ Track discounts and coupons <br />
+        ✔ Calculate prices automatically <br />
+        ✔ Save money with coding
+      </p>
+    </section>
+
+    <!-- Search -->
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search items..."
+      onkeyup="searchItems()"
+    />
+
+    <!-- Shopping Form -->
+    <section class="section">
+
+      <h2>Create Your Shopping List</h2>
+
+      <div class="inputs">
+
+        <input
+          type="text"
+          id="itemName"
+          placeholder="Item Name"
+        />
+
+        <select id="category">
+          <option value="Clothing">Clothing</option>
+          <option value="Food">Food</option>
+          <option value="Household">Household</option>
+        </select>
+
+        <input
+          type="number"
+          id="price"
+          placeholder="Price (€)"
+        />
+
+        <input
+          type="number"
+          id="quantity"
+          placeholder="Quantity"
+        />
+
+        <input
+          type="number"
+          id="discount"
+          placeholder="Discount %"
+        />
+
+        <button onclick="addItem()">
+          Add Item
+        </button>
+
+      </div>
+
+      <!-- Shopping Table -->
+      <table>
+
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Category</th>
+            <th>Price (€)</th>
+            <th>Quantity</th>
+            <th>Discount (%)</th>
+            <th>Final Price (€)</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="shoppingBody">
+          <!-- Items will appear here -->
+        </tbody>
+
+      </table>
+
+      <!-- Total -->
+      <div class="total-box">
+        <h3>
+          Total Cost:
+          € <span id="total">0.00</span>
+        </h3>
+      </div>
+
+    </section>
+
+    <!-- Discounts -->
+    <section class="section">
+
+      <h2>Best Discounts & Coupons</h2>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Shop</th>
+            <th>Discount</th>
+            <th>Coupon</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>Clothing</td>
+            <td>Fashion Store</td>
+            <td>20% OFF</td>
+            <td>STYLE20</td>
+          </tr>
+
+          <tr>
+            <td>Food</td>
+            <td>SuperMart</td>
+            <td>10% OFF</td>
+            <td>FOOD10</td>
+          </tr>
+
+          <tr>
+            <td>Household</td>
+            <td>HomeShop</td>
+            <td>15% OFF</td>
+            <td>HOME15</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </section>
+
+    <!-- Coding Explanation -->
+    <section class="section">
+
+      <h2>How Coding Helps</h2>
+
+      <ul>
+        <li>➕ Addition calculates total prices</li>
+        <li>✖ Multiplication calculates quantity × price</li>
+        <li>➖ Subtraction removes discounts</li>
+        <li>🔢 Decimals calculate exact money values</li>
+        <li>💻 JavaScript automates shopping calculations</li>
+      </ul>
+
+    </section>
+
+    <!-- Inventory -->
+    <section class="section">
+
+      <h2>Inventory Categories</h2>
+
+      <div class="inventory-container">
+
+        <!-- Clothing -->
+        <div class="card">
+
+          <img
+            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"
+            alt="Clothing"
+          />
+
+          <h3>👕 Clothing</h3>
+
+          <p>
+            Shirts, Shoes, Jackets, Jeans
+          </p>
+
+        </div>
+
+        <!-- Food -->
+        <div class="card">
+
+          <img
+            src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400"
+            alt="Food"
+          />
+
+          <h3>🍎 Food</h3>
+
+          <p>
+            Rice, Fruits, Milk, Vegetables
+          </p>
+
+        </div>
+
+        <!-- Household -->
+        <div class="card">
+
+          <img
+            src="https://images.unsplash.com/photo-1583947582886-f40ec95dd752?w=400"
+            alt="Household"
+          />
+
+          <h3>🧴 Household</h3>
+
+          <p>
+            Soap, Towels, Detergent
+          </p>
+
+        </div>
+
+      </div>
+
+      <h3 id="mostCategory"></h3>
+
+    </section>
+
+    <!-- Contact -->
+    <section class="section">
+
+      <h2>Contact Us</h2>
+
+      <p>
+        Email:
+        <a href="mailto:support@shoppingplanner.com">
+          support@shoppingplanner.com
+        </a>
+      </p>
+
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with HTML, CSS & JavaScript</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 
 </body>
-</html>
+</html> 
